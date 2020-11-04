@@ -24,6 +24,7 @@ export type StartLevelType = {
 export type levelInitType = {
     score:number,
     livesNumber:number,
+    countStars:number,
     keyCollected:boolean,
 }
 

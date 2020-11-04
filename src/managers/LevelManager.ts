@@ -1,6 +1,6 @@
 import Player from "../elements/Player";
 import Enemy from "../elements/Enemy";
-import IndicatorsManager from "./IndicatorsManager";
+import IndicatorsManager, {LIVES_TO_START} from "./IndicatorsManager";
 import QuestionCube from "../elements/QuestionCube";
 import SoundManager from "./SoundManager";
 import FinalTable from "../elements/FinalTable";
@@ -15,7 +15,7 @@ export class LevelManager {
     private game: Phaser.Scene;
     indicatorsManager: IndicatorsManager;
     private soundManager: SoundManager;
-    private level: number;
+    level: number;
     private levelComplete: boolean;
     private startX: number;
     private startY: number;
@@ -167,18 +167,22 @@ export class LevelManager {
         this.finalTable.finish();
 
         this.game.cameras.main.fadeOut(1000, 0, 0, 0);
-        this.game.cameras.main.on('camerafadeoutcomplete', function () {
-            this.goNextLevel(this.nextLevel);
-        }, this);
+        this.game.cameras.main.on('camerafadeoutcomplete', () => this.goNextLevel(this.nextLevel), this);
     }
 
     goNextLevel(name:string) {
         this.level++;
 
+        if (name === 'congratulation-scene') {
+            this.resetBaseStates();
+        }
+
         this.game.scene.start(name, {
             score: this.indicatorsManager.score,
             livesNumber: this.indicatorsManager.livesNumber,
-            level: this.level
+            countStars: this.indicatorsManager.countStars,
+            keyCollected: this.indicatorsManager.keyCollected,
+            level: this.level,
         });
     }
 
@@ -194,6 +198,7 @@ export class LevelManager {
             this.restartLevel();
 
             if (this.indicatorsManager.livesNumber === 0) {
+                this.resetBaseStates();
                 this.game.scene.start('game-over-scene');
             }
         }
@@ -352,6 +357,14 @@ export class LevelManager {
         positions.map(({x, y}:{x:number, y:number}) => {
             this.questionCubes.push(new QuestionCube(this.game, x, y));
         });
+    }
+
+    resetBaseStates() {
+        this.indicatorsManager.score = 0;
+        this.indicatorsManager.livesNumber = LIVES_TO_START;
+        this.indicatorsManager.keyCollected = false;
+        this.indicatorsManager.countStars = 0;
+        this.level = 1;
     }
 }
 

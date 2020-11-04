@@ -1,7 +1,9 @@
+import LevelManager from "../managers/LevelManager";
+
 export default class IntroductionScene extends Phaser.Scene {
 
     constructor () {
-        super('introduction-scene')
+        super('introduction-scene');
     }
 
     preload () {

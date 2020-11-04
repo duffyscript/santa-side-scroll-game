@@ -1,4 +1,4 @@
-import Phaser from "phaser";
+// import Phaser from "phaser";
 
 import IntroductionScene from "./scenes/IntroductionScene";
 import Level1Scene from "./scenes/Level1Scene";

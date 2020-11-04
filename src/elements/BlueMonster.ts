@@ -1,10 +1,10 @@
-import Phaser from "phaser";
+// import Phaser from "phaser";
 import Enemy from "./Enemy";
 import {EnemyMovingType} from "../types";
 
 class BlueMonster extends Enemy {
-    constructor(game:Phaser.Scene, x:number, y:number, name:string, setMoving:EnemyMovingType) {
-        super(game, x, y, name, setMoving);
+    constructor(game:Phaser.Scene, x:number, y:number, setMoving:EnemyMovingType) {
+        super(game, x, y, "monster-blue", setMoving);
 
         this.animationPrefix = 'monster-blue';
         this.setSize(100, 115)

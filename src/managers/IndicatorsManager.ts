@@ -1,4 +1,5 @@
-const COUNT_STARS_TO_LIVE = 20;
+const COUNT_STARS_TO_LIVE = 40;
+export const LIVES_TO_START = 3;
 
 class IndicatorsManager {
 
@@ -7,7 +8,7 @@ class IndicatorsManager {
     score: number;
     private scoreElement: Phaser.GameObjects.Text | null;
     countLive: Phaser.GameObjects.Text | null;
-    private countStars: number;
+    countStars: number;
     private countStarsElement: Phaser.GameObjects.Text|null;
     keyCollected: boolean;
 

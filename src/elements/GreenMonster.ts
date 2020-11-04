@@ -3,8 +3,8 @@ import Enemy from "./Enemy";
 import {EnemyMovingType} from "../types";
 
 class GreenMonster extends Enemy {
-    constructor(game:Phaser.Scene, x:number, y:number, name:string, setMoving:EnemyMovingType) {
-        super(game, x, y, name, setMoving);
+    constructor(game:Phaser.Scene, x:number, y:number, setMoving:EnemyMovingType) {
+        super(game, x, y, "monster-green", setMoving);
 
         this.animationPrefix = null;
 

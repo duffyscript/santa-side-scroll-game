@@ -1,10 +1,10 @@
-import Enemy from "../elements/Enemy";
 import BlueMonster from "../elements/BlueMonster";
 import GreenMonster from "../elements/GreenMonster";
 import Thorn from "../elements/Thorn";
 import LevelManager from "../managers/LevelManager";
 import Ice from "../elements/Ice";
 import Key from "../elements/Key";
+import {LIVES_TO_START} from "../managers/IndicatorsManager";
 
 class Level1Scene extends Phaser.Scene {
 
@@ -17,8 +17,6 @@ class Level1Scene extends Phaser.Scene {
         super('level1-scene');
 
         this.levelManager = new LevelManager(this);
-        this.width;
-        this.height;
     }
 
     preload () {
@@ -127,11 +125,8 @@ class Level1Scene extends Phaser.Scene {
         platforms.create(6922, 334, 'platform1');
         platforms.create(2940, 292, 'brick-wall-square');
         platforms.create(4683, 472, 'brick-wall-square');
-        // platforms.create(4635, 472, 'brick-wall-square');
         platforms.create(4474, 352, 'brick-wall-square');
-        // platforms.create(4522, 352, 'brick-wall-square');
         platforms.create(4683, 216, 'brick-wall-square');
-        // platforms.create(4635, 216, 'brick-wall-square');
         platforms.create(3806, 266, 'wall-square');
         platforms.create(3656, 174, 'wall-square');
         platforms.create(3956, 174, 'wall-square');
@@ -146,16 +141,16 @@ class Level1Scene extends Phaser.Scene {
 
         // Enemies
         let enemies = [];
-        enemies.push(new GreenMonster(this, 840, 450, "monster-green", {y: {from: 430, to: this.height - 40}, pause: 2000}));
-        enemies.push(new BlueMonster(this, 1494, 356, "monster-blue", {x: {from: 1409, to: 1585}, pause: 2000}));
-        enemies.push(new BlueMonster(this, 2824, 360, "monster-blue", {x: {from: 2631, to: 2846}, pause: 3000}));
-        enemies.push(new GreenMonster(this, 3478, 400, "monster-green", {y: {from: 335, to: this.height - 40}, pause: 2000}));
-        enemies.push(new GreenMonster(this, 4138, 620, "monster-green", {y: {from: 335, to: this.height - 40}, pause: 2000}));
-        enemies.push(new BlueMonster(this, 4794, 121, "monster-blue", {x: {from: 4742, to: 4873}, pause: 1000}));
-        enemies.push(new BlueMonster(this, 5632, 400, "monster-blue", {x: {from: 5515, to: 5720}, pause: 500}));
-        enemies.push(new GreenMonster(this, 6470, 290, "monster-green", {y: {from: 289, to: 551}, pause: 1000}));
-        enemies.push(new GreenMonster(this, 6652, 599, "monster-green", {y: {from: 338, to: this.height - 40}, pause: 1000}));
-        enemies.push(new BlueMonster(this, 7750, 400, "monster-blue", {x: {from: 7721, to: 7960}, pause: 500}));
+        enemies.push(new GreenMonster(this, 840, 450, {y: {from: 430, to: this.height - 40}, pause: 2000}));
+        enemies.push(new BlueMonster(this, 1494, 356, {x: {from: 1409, to: 1585}, pause: 2000}));
+        enemies.push(new BlueMonster(this, 2824, 360, {x: {from: 2631, to: 2846}, pause: 3000}));
+        enemies.push(new GreenMonster(this, 3478, 400, {y: {from: 335, to: this.height - 40}, pause: 2000}));
+        enemies.push(new GreenMonster(this, 4138, 620, {y: {from: 335, to: this.height - 40}, pause: 2000}));
+        enemies.push(new BlueMonster(this, 4794, 121, {x: {from: 4742, to: 4873}, pause: 1000}));
+        enemies.push(new BlueMonster(this, 5632, 400, {x: {from: 5515, to: 5720}, pause: 500}));
+        enemies.push(new GreenMonster(this, 6470, 290, {y: {from: 289, to: 551}, pause: 1000}));
+        enemies.push(new GreenMonster(this, 6652, 599, {y: {from: 338, to: this.height - 40}, pause: 1000}));
+        enemies.push(new BlueMonster(this, 7750, 400, {x: {from: 7721, to: 7960}, pause: 500}));
 
         let playerPlatforms = this.physics.add.staticGroup();
 
@@ -254,7 +249,6 @@ class Level1Scene extends Phaser.Scene {
             mapWidth: this.width * 8,
             mapHeight: this.height,
             startX: 100,
-            // startX: 7600,
             startY: 300,
             finishX: 8009,
             finishY: 472,

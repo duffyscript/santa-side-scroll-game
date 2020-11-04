@@ -12,13 +12,14 @@ export default class Level2Scene extends Phaser.Scene {
         this.levelManager = new LevelManager(this);
     }
 
-    init({score, livesNumber, keyCollected}:levelInitType) {
+    init({score, livesNumber, keyCollected, countStars}:levelInitType) {
         if (!score || !livesNumber || !keyCollected) {
             return;
         }
 
         this.levelManager.indicatorsManager.score = score;
         this.levelManager.indicatorsManager.livesNumber = livesNumber;
+        this.levelManager.indicatorsManager.countStars = countStars;
         this.levelManager.indicatorsManager.keyCollected = keyCollected;
     }
 
@@ -41,20 +42,12 @@ export default class Level2Scene extends Phaser.Scene {
         platforms.create(400 + 3695 / 2, height - 240 / 2, 'ground-level2');
 
         // Enemies
-        let enemies = [];
-        let chest = null;
-        this.levelManager.indicatorsManager.keyCollected = true;
-        chest = new Chest(this, width * 4 - 400, 350, this.levelManager.indicatorsManager.keyCollected);
+        let chest = new Chest(this, width * 4 - 400, 350, this.levelManager.indicatorsManager.keyCollected);
 
         this.levelManager = Object.assign(this.levelManager, {
             platforms,
-            // playerPlatforms,
-            // movablePlatforms,
-            chest,
-            enemies
+            chest
         });
-
-        console.log(this.levelManager.chest);
 
         // Level init
         this.levelManager.startLevel({
@@ -66,6 +59,18 @@ export default class Level2Scene extends Phaser.Scene {
             finishY: 376,
             nextLevel: 'congratulation-scene'
         });
+    }
+
+    update() {
+        if (this.levelManager.enemies) {
+            this.destroyEnemies();
+        }
+
+        if (this.levelManager.player?.body?.x > 600 && this.levelManager.enemies?.length < 2) {
+            this.createEnemies();
+        }
+
+        this.levelManager.update();
     }
 
     createEnemies() {
@@ -84,17 +89,5 @@ export default class Level2Scene extends Phaser.Scene {
                 this.levelManager.enemies.splice(index, 1);
             }
         });
-    }
-
-    update() {
-        if (this.levelManager.enemies) {
-            this.destroyEnemies();
-        }
-
-        if (this.levelManager.player.body.x > 600 && this.levelManager.enemies?.length < 2) {
-            this.createEnemies();
-        }
-
-        this.levelManager.update();
     }
 }
