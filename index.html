@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Making your first Phaser 3 Game - Part 1</title>
+<!--    <script src="//cdn.jsdelivr.net/npm/phaser@3.24.1/dist/phaser.js"></script>-->
+    <style type="text/css">
+        body {
+            margin: 0;
+            background: #000;
+        }
+
+        .game {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+
+        canvas {
+            display: block;
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 100%;
+            max-height: 100vh;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+
+<div id="game" class="game"></div>
+<!--<script src="src" type="module"></script>-->
+<script src="dist/main.js"></script>
+
+</body>
+</html>
