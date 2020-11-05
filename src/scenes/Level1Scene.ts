@@ -248,7 +248,8 @@ class Level1Scene extends Phaser.Scene {
         this.levelManager.startLevel({
             mapWidth: this.width * 8,
             mapHeight: this.height,
-            startX: 100,
+            // startX: 100,
+            startX: 7500,
             startY: 300,
             finishX: 8009,
             finishY: 472,

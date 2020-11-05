@@ -82,7 +82,7 @@ abstract class Enemy extends Phaser.Physics.Arcade.Sprite {
     }
 
     update() {
-        if (this.death) {
+        if (this.death || !this.body) {
             return;
         }
 

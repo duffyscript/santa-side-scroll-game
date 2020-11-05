@@ -1,4 +1,4 @@
-const COUNT_STARS_TO_LIVE = 40;
+const COUNT_STARS_TO_LIVE = 35;
 export const LIVES_TO_START = 3;
 
 class IndicatorsManager {

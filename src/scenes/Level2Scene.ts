@@ -13,10 +13,23 @@ export default class Level2Scene extends Phaser.Scene {
     }
 
     init({score, livesNumber, keyCollected, countStars}:levelInitType) {
-        this.levelManager.indicatorsManager.score = score;
-        this.levelManager.indicatorsManager.livesNumber = livesNumber;
-        this.levelManager.indicatorsManager.countStars = countStars;
-        this.levelManager.indicatorsManager.keyCollected = keyCollected;
+        if (score) {
+            this.levelManager.indicatorsManager.score = score;
+        }
+
+        if (countStars) {
+            this.levelManager.indicatorsManager.score = countStars;
+        }
+
+        if (livesNumber) {
+            this.levelManager.indicatorsManager.livesNumber = livesNumber;
+        }
+
+        if (keyCollected) {
+            this.levelManager.indicatorsManager.keyCollected = keyCollected;
+        }
+
+        this.levelManager.enemies = [];
     }
 
     preload () {
@@ -70,7 +83,7 @@ export default class Level2Scene extends Phaser.Scene {
     }
 
     createEnemies() {
-        if (this.levelManager.enemies.length === 0 || this.levelManager.enemies[0].body.x < this.cameras.main.worldView.x + 1024 / 2) {
+        if (this.levelManager.enemies.length === 0 || this.levelManager.enemies[0]?.body?.x < this.cameras.main.worldView.x + 1024 / 2) {
             let startPosX = this.levelManager.player.body.x + 1024 / 2 + 100;
             let endPosX = this.levelManager.player.body.x - 1024 / 2 - 100;
             let enemy = new GreenFlyMonster(this, startPosX - 1, 340, {x: {from: endPosX, to: startPosX}});
