@@ -190,6 +190,7 @@ export class LevelManager {
         this.player.death = isDeath;
 
         this.indicatorsManager.livesNumber--;
+        this.indicatorsManager.score = 0;
         this.indicatorsManager.countLive.setText(this.indicatorsManager.livesNumber.toString());
         this.soundManager.stopAudio();
 
@@ -307,7 +308,12 @@ export class LevelManager {
         this.game.cameras.main.fadeOut(1000, 0, 0, 0);
 
         this.game.cameras.main.on('camerafadeoutcomplete', function () {
-            this.game.scene.restart();
+            this.game.scene.start(this.game.scene.key, {
+                score: this.indicatorsManager.score,
+                livesNumber: this.indicatorsManager.livesNumber,
+                countStars: this.indicatorsManager.countStars,
+                keyCollected: this.indicatorsManager.keyCollected,
+            });
         }, this);
     }
 

@@ -18,7 +18,7 @@ export default class Level2Scene extends Phaser.Scene {
         }
 
         if (countStars) {
-            this.levelManager.indicatorsManager.score = countStars;
+            this.levelManager.indicatorsManager.countStars = countStars;
         }
 
         if (livesNumber) {

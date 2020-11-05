@@ -4,7 +4,6 @@ import Thorn from "../elements/Thorn";
 import LevelManager from "../managers/LevelManager";
 import Ice from "../elements/Ice";
 import Key from "../elements/Key";
-import {LIVES_TO_START} from "../managers/IndicatorsManager";
 
 class Level1Scene extends Phaser.Scene {
 
@@ -248,8 +247,7 @@ class Level1Scene extends Phaser.Scene {
         this.levelManager.startLevel({
             mapWidth: this.width * 8,
             mapHeight: this.height,
-            // startX: 100,
-            startX: 7500,
+            startX: 100,
             startY: 300,
             finishX: 8009,
             finishY: 472,
