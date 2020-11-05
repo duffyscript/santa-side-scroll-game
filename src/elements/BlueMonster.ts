@@ -8,7 +8,7 @@ class BlueMonster extends Enemy {
 
         this.animationPrefix = 'monster-blue';
         this.setSize(100, 115)
-        this.setOffset(35, 25);
+        this.setOffset(35, 28);
         this.setScale(0.5);
     }
 
