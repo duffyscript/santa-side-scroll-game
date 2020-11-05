@@ -33,7 +33,6 @@ class IndicatorsManager {
 
     showScore() {
         this.scoreElement = this.game.add.text(16, 16, this.score.toString(), { fontSize: '26px', fill: '#fff', align: 'right' });
-
         this.scorePosition();
         // @ts-ignore
         this.scoreElement.fixedToCamera = true;

@@ -13,10 +13,6 @@ export default class Level2Scene extends Phaser.Scene {
     }
 
     init({score, livesNumber, keyCollected, countStars}:levelInitType) {
-        if (!score || !livesNumber || !keyCollected) {
-            return;
-        }
-
         this.levelManager.indicatorsManager.score = score;
         this.levelManager.indicatorsManager.livesNumber = livesNumber;
         this.levelManager.indicatorsManager.countStars = countStars;

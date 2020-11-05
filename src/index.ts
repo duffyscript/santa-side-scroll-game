@@ -23,6 +23,7 @@ var config:Phaser.Types.Core.GameConfig = {
         }
     },
     scene: [IntroductionScene, Level1Scene, Level2Scene, GameOverScene, CongratulationScene]
+    // scene: [Level2Scene, GameOverScene, CongratulationScene, IntroductionScene, Level1Scene]
 };
 
 new Phaser.Game(config);

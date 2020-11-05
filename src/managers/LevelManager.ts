@@ -182,7 +182,6 @@ export class LevelManager {
             livesNumber: this.indicatorsManager.livesNumber,
             countStars: this.indicatorsManager.countStars,
             keyCollected: this.indicatorsManager.keyCollected,
-            level: this.level,
         });
     }
 
